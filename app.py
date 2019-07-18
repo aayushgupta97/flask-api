@@ -187,8 +187,6 @@ def hello_word():
     return render_template('index.html', sum=res)
 
 
-
-
 # Run server
 if __name__ == '__main__':
     app.run(debug=True)
