@@ -1,12 +1,12 @@
-#Flask-API
+# Flask-API
 This is a basic API that can be used to test your server. Here, this is used to distinguish the performance between the default python server and gunicorn server.
 
-###Getting Started
+### Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-####Prerequisites
+#### Prerequisites
 
-1) Installing nginx 
+**1) Installing nginx8** 
    ```
    sudo apt udpate 
    sudo apt install nginx 
@@ -37,14 +37,14 @@ These instructions will get you a copy of the project up and running on your loc
     ````
     sudo nginx -t
     ````  
-2) Create a python Virtual environment
+**2) Create a python Virtual environment**
     ````
     virtualenv venv -p python3.6
     source venv/bin/activate
     pip install gunicorn flask
     ```` 
 
-3) Configuring gunicorn and running the app with gunicorn 
+**3) Configuring gunicorn and running the app with gunicorn**
 
     ````
     gunicorn wsgi:app
