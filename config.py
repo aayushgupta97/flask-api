@@ -27,3 +27,7 @@ accesslog = '-'
 access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
 
 proc_name = None
+
+
+# gunicorn -c config.py wsgi:app
+# gunicorn -w8 wsgi:app
