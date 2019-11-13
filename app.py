@@ -3,8 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
 import requests
+from walrus import *
 # import simplejson
-import json
+# import json
 #Init app
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -16,7 +17,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Init db
 db = SQLAlchemy(app)
-
+# cache = Cache(db)
+dba = Database()
+cache = dba.cache()
 # Init ma
 ma = Marshmallow(app)
 
@@ -107,11 +110,13 @@ def delete_product(id):
 
 
 @app.route('/', methods=['GET'])
+# @Cache.cached(Cache, timeout=60)
+# @cache.cached(timeout=30)
 def computation_task():
     for i in range(1, 10000):
         res = 0
         result = 0
-        for j in range(1, 10000):
+        for j in range(1, 1000):
             res = res + j
             result = j + j
     return render_template('index.html', sum=res)
@@ -128,7 +133,7 @@ def data_api():
     requests.get("http://dummy.restapiexample.com/api/v1/employees")
     requests.get("http://dummy.restapiexample.com/api/v1/employees")
     return "Hello"
-
+    #
     # r = requests.get("http://dummy.restapiexample.com/api/v1/employees")
     # for i in range(1, 5):
     #     list_data = r.json()
@@ -150,13 +155,24 @@ def data_api():
 
 
 @app.route('/list_data', methods=['GET'])
+# @Cache.cached(Cache, timeout=60)
 def new_api():
-    r = requests.get("http://dummy.restapiexample.com/api/v1/employees")
-    list_data = r.json()
-    for num in range(0, 8):
-        list_data.extend(list_data)
-    print(len(list_data))
-    return "Hi"
+    # r = requests.get("http://dummy.restapiexample.com/api/v1/employees")
+    # list_data = r.json()
+    # for num in range(0, 8):
+    #     list_data.extend(list_data)
+    # print(len(list_data))
+    # return "Hi"\
+
+    # print(json.loads(response.text))
+    # json_data = response.json() if response and response.status_code == 200 else None
+    # print(jsonify(response.json()))
+    # print(type(response.json()))
+    # list_data = r.json()
+    # print(type(list_data))
+    # data = jsonify(list_data)
+    # print(data)
+    return jsonify(requests.get("https://jsonplaceholder.typicode.com/comments").json())
 
 
 @app.route('/fibonacci', methods=['GET'])
