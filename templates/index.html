@@ -5,7 +5,9 @@
     <title>flask-api</title>
 </head>
 <body>
+{% if sum %}
 <h1>The sum of first 9999 numbers is {{ sum }}</h1>
+{% endif %}
 <br>
 {% for number in series %}
 <h3>{{ number }} </h3>
