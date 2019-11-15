@@ -2,10 +2,6 @@ from locust import Locust, TaskSet, task, HttpLocust
 
 
 class MyTaskSet(TaskSet):
-    # @task
-    # def my_task(self):
-    #     print('executing task')
-
     @task(6)
     def task1(self):
         self.client.get("/")
