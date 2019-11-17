@@ -20,8 +20,8 @@ class MyTaskSet(TaskSet):
 
 class MyLocust(HttpLocust):
     task_set = MyTaskSet
-    min_wait = 0
-    max_wait = 1000
+    min_wait = 1000
+    max_wait = 25000
     stop_timeout = 600
 
 # locust -f locustfile_2.py --host=http://localhost:8000
