@@ -133,7 +133,8 @@ def computation_task():
 
 @app.route('/data', methods=['GET'])
 def data_api():
-    return jsonify(requests.get("http://dummy.restapiexample.com/api/v1/employees").json())
+    return jsonify([0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946])
+    # return jsonify(requests.get("https://jsonplaceholder.typicode.com/comments").json())
 
 
 @app.route('/list_data', methods=['GET'])
